@@ -2,4 +2,4 @@
 https://github.com/coalcellar/SpringQuickStart2.git
 
 
-springQuickStart 2 . . . .
+springQuickStart jihye
