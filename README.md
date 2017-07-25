@@ -1,5 +1,7 @@
-# SpringQuickStart2
-https://github.com/coalcellar/SpringQuickStart2.git
+# SpringQuickStart jihye
+https://github.com/interpark-studyhard/SpringQuickStart-jihye
 
 
 springQuickStart jihye
+
+go forward
