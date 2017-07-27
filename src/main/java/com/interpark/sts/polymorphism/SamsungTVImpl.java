@@ -3,11 +3,17 @@
  */
 package com.interpark.sts.polymorphism;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author 최지혜
  *
  */
 public class SamsungTVImpl implements TV {
+	public static final Logger LOGGER = LoggerFactory.getLogger(SamsungTVImpl.class);
+			
+	private SonySpeaker sonySpeaker;
 	
 	public SamsungTVImpl() {
 		System.out.println("==== > SamsungTV 객체 생성. ");
@@ -37,7 +43,9 @@ public class SamsungTVImpl implements TV {
 	@Override
 	public void volumeUp() {
 		// TODO Auto-generated method stub
-		System.out.println("SamsungTV --- 소리 올린다.");
+//		System.out.println("SamsungTV --- 소리 올린다.");
+		sonySpeaker = new SonySpeaker();
+		sonySpeaker.volumeUp();
 	}
 
 	/* (non-Javadoc)
@@ -46,7 +54,9 @@ public class SamsungTVImpl implements TV {
 	@Override
 	public void volumeDown() {
 		// TODO Auto-generated method stub
-		System.out.println("SamsungTV --- 소리 내린다.");
+//		System.out.println("SamsungTV --- 소리 내린다.");
+		sonySpeaker = new SonySpeaker();
+		sonySpeaker.volumeDown();
 	}
 
 	public void initMethod() {

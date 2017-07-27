@@ -35,6 +35,11 @@ public class TVUser {
 		tv.volumeUp();
 		tv.volumeDown();
 		
+		// 2.1 Singleton test
+		TV tv1 = (TV) factory.getBean("tv");
+		TV tv2 = (TV) factory.getBean("tv");
+		TV tv3 = (TV) factory.getBean("tv");
+		
 		// 3. Spring container 를 종료
 		factory.close();
 	}
