@@ -12,14 +12,14 @@ import org.slf4j.LoggerFactory;
 public class SonySpeaker {
 	public static final Logger LOGGER = LoggerFactory.getLogger(SonySpeaker.class);
 	public SonySpeaker() {
-		System.out.println("===== > SonySpeaker 객체 생성...");
+		LOGGER.info("===== > SonySpeaker 객체 생성...");
 	}
 	
 	public void volumeUp() {
-		System.out.println("-- Sony speaker 소리 올림 .. ");
+		LOGGER.info("-- Sony speaker 소리 올림 .. ");
 	}
 	
 	public void volumeDown() {
-		System.out.println("-- Sony speaker 소리 내림 .. ");
+		LOGGER.info("-- Sony speaker 소리 내림 .. ");
 	}
 }

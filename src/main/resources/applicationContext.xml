@@ -4,6 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- 	<bean class="com.interpark.sts.polymorphism.SamsungTVImpl"></bean> -->
-	<bean id="tv" class="com.interpark.sts.polymorphism.SamsungTVImpl" scope="singleton"></bean>
+	<bean id="tv" class="com.interpark.sts.polymorphism.SamsungTVImpl" scope="singleton">
+		<constructor-arg index="0" ref="sony"></constructor-arg>
+		<constructor-arg index="1" value="2700000"></constructor-arg>
+	</bean>
+	<bean id="sony" class="com.interpark.sts.polymorphism.SonySpeaker"></bean>
 <!-- 	<bean id="tv" class="com.interpark.sts.polymorphism.SamsungTVImpl" init-method="initMethod" destroy-method="destroyMethod"></bean> -->
 </beans>
