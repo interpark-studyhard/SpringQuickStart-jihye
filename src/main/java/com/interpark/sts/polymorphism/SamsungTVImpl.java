@@ -3,6 +3,7 @@
  */
 package com.interpark.sts.polymorphism;
 
+import com.interpark.sts.polymorphism.ifs.Speaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,21 +13,22 @@ import org.slf4j.LoggerFactory;
 public class SamsungTVImpl implements TV {
 	public static final Logger LOGGER = LoggerFactory.getLogger(SamsungTVImpl.class);
 			
-	private SonySpeaker sonySpeaker;
+	private Speaker speaker;
+//	private SonySpeaker sonySpeaker;
 	private int price;
 
 	public SamsungTVImpl() {
 		LOGGER.info("==== > SamsungTV 객체 생성. ");
 	}
 
-	public SamsungTVImpl(SonySpeaker speaker) {
+	public SamsungTVImpl(Speaker speaker) {
 		LOGGER.info("=== > samsungTV (2) 객체 생성.");
-		this.sonySpeaker = speaker;
+		this.speaker = speaker;
 	}
 
-	public SamsungTVImpl(SonySpeaker speaker, int price) {
+	public SamsungTVImpl(Speaker speaker, int price) {
 		LOGGER.info(" === > SamsungTV (3) 객체 생성 .. .");
-		this.sonySpeaker = speaker;
+		this.speaker = speaker;
 		this.price = price;
 	}
 	
@@ -56,7 +58,7 @@ public class SamsungTVImpl implements TV {
 		// TODO Auto-generated method stub
 //		LOGGER.info("SamsungTV --- 소리 올린다.");
 //		sonySpeaker = new SonySpeaker();
-		sonySpeaker.volumeUp();
+		speaker.volumeUp();
 	}
 
 	/* (non-Javadoc)
@@ -67,7 +69,7 @@ public class SamsungTVImpl implements TV {
 		// TODO Auto-generated method stub
 //		LOGGER.info("SamsungTV --- 소리 내린다.");
 //		sonySpeaker = new SonySpeaker();
-		sonySpeaker.volumeDown();
+		speaker.volumeDown();
 	}
 
 	public void initMethod() {

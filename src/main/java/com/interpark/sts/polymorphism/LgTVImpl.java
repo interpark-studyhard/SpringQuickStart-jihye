@@ -3,10 +3,13 @@
  */
 package com.interpark.sts.polymorphism;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author 최지혜
  *
  */
+@Component("lgtv")
 public class LgTVImpl implements TV {
 
 	/* (non-Javadoc)

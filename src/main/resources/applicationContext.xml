@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<context:component-scan base-package="com.interpark.sts"/>
 
 <!-- 	<bean class="com.interpark.sts.polymorphism.SamsungTVImpl"></bean> -->
-	<bean id="tv" class="com.interpark.sts.polymorphism.SamsungTVImpl" scope="singleton">
-		<constructor-arg index="0" ref="sony"></constructor-arg>
+	<!--
+	<bean id="tvorg" class="com.interpark.sts.polymorphism.SamsungTVImpl" scope="singleton">
+		<constructor-arg index="0" ref="apple"></constructor-arg>
 		<constructor-arg index="1" value="2700000"></constructor-arg>
 	</bean>
-	<bean id="sony" class="com.interpark.sts.polymorphism.SonySpeaker"></bean>
+-->
+	<bean id="tv" class="com.interpark.sts.polymorphism.impl.SamsungTV" scope="singleton" p:speaker-ref="apple" p:price="34560000">
+		<!--setter를 이용하기 위해서는 property를 사용해야 함-->
+		<!--<property name="speaker" ref="apple"/>-->
+		<!--<property name="price" value="3300000"/>-->
+	</bean>
+
+	<!--<bean id="sony" class="com.interpark.sts.polymorphism.SonySpeaker"></bean>-->
+	<bean id="sony" class="com.interpark.sts.polymorphism.impl.SonySpeaker"></bean>
+	<bean id="apple" class="com.interpark.sts.polymorphism.impl.AppleSpeaker"></bean>
+<!--
+<bean id="collectionBean" class="com.interpark.sts.polymorphism.injection.CollectionBean">
+	<property name="addressList">
+		<list>
+			<value>서울시 강남구 역삼동 12345</value>
+			<value>서울시 서초구 서초동 45678</value>
+		</list>
+	</property>
+	<property name="addressSet">
+		<set>
+			<value>서울시 강남구 역삼동 12345</value>
+			<value>서울시 강남구 역삼동 12345</value>
+			<value>서울시 서초구 서초동 3333</value>
+		</set>
+	</property>
+</bean>-->
 <!-- 	<bean id="tv" class="com.interpark.sts.polymorphism.SamsungTVImpl" init-method="initMethod" destroy-method="destroyMethod"></bean> -->
 </beans>
