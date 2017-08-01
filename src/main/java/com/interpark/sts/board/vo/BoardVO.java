@@ -1,4 +1,4 @@
-package com.interpark.sts.board;
+package com.interpark.sts.board.vo;
 
 import java.sql.Date;
 

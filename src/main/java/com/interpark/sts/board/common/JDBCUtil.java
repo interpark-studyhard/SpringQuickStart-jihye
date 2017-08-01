@@ -13,7 +13,10 @@ public class JDBCUtil {
     public static Connection getConnection() {
         try {
             Class.forName("org.h2.Driver");
-            return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+            return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test;FILE_LOCK=NO;AUTO_SERVER=TRUE", "sa", "");
+//            return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE", "sa", "");
+//            return DriverManager.getConnection("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE", "sa", "");
+//            return DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
         } catch (Exception e) {
             e.printStackTrace();
         }

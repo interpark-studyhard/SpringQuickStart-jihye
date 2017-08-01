@@ -1,8 +1,9 @@
 package com.interpark.sts.board.impl;
 
-import com.interpark.sts.board.BoardVO;
 import com.interpark.sts.board.dao.BoardDAO;
 import com.interpark.sts.board.service.BoardService;
+import com.interpark.sts.board.vo.BoardVO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

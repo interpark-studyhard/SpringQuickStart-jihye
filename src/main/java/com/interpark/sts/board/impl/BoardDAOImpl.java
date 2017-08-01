@@ -1,8 +1,9 @@
 package com.interpark.sts.board.impl;
 
-import com.interpark.sts.board.BoardVO;
 import com.interpark.sts.board.common.JDBCUtil;
 import com.interpark.sts.board.dao.BoardDAO;
+import com.interpark.sts.board.vo.BoardVO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -29,7 +30,7 @@ public class BoardDAOImpl implements BoardDAO {
     private final String BOARD_UPDATE = "update board set title = ?, content = ? where 1=1 and seq = ?";
     private final String BOARD_DELETE = "delete board where 1=1 and seq = ?";
     private final String BOARD_GET = "select * from board where seq = ?";
-    private final String BOARD_LIST = "select * from board order by sea desc";
+    private final String BOARD_LIST = "select * from board order by seq desc";
 
     // write
     @Override
@@ -107,7 +108,7 @@ public class BoardDAOImpl implements BoardDAO {
                 boardVO.setCnt(rs.getInt("CNT"));
             }
         } catch (Exception e) {
-
+        	e.printStackTrace();
         } finally {
             JDBCUtil.close(rs, stmt, conn);
         }
@@ -123,6 +124,7 @@ public class BoardDAOImpl implements BoardDAO {
         try {
             conn = JDBCUtil.getConnection();
             stmt = conn.prepareStatement(BOARD_LIST);
+            LOGGER.info("Query  : \n "+BOARD_LIST);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -136,7 +138,7 @@ public class BoardDAOImpl implements BoardDAO {
                 boardList.add(boardVO);
             }
         } catch (Exception e) {
-
+    		e.printStackTrace();
         } finally {
             JDBCUtil.close(rs, stmt, conn);
         }

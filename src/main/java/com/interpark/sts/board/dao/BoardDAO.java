@@ -1,8 +1,8 @@
 package com.interpark.sts.board.dao;
 
-import com.interpark.sts.board.BoardVO;
-
 import java.util.List;
+
+import com.interpark.sts.board.vo.BoardVO;
 
 /**
  * Created by 최지혜 on 2017-07-31.
