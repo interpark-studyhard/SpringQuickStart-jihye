@@ -35,8 +35,9 @@ public class UserServiceClient {
 		vo.setPassword("1111");
 		
 		UserVO user = userService.getUser(vo);
+		LOGGER.info("user : {}", user);
 		if(user != null) {
-			LOGGER.info("** {} 님 환영합니다.", vo.getName());
+			LOGGER.info("** {} 님 환영합니다.", user.getName());
 		}
 		container.close();
 	}

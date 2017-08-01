@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import com.interpark.sts.board.common.JDBCUtil;
 import com.interpark.sts.board.dao.UserDAO;
@@ -17,7 +18,7 @@ import com.interpark.sts.board.vo.UserVO;
 /**
  * @author 최지혜
  */
-//@Repository("userDAO")
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserDAOImpl.class);
@@ -26,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
 	
-	private final String USER_GET = "select * from user where id=? and password=?";
+	private final String USER_GET = "select * from users where id=? and password=?";
 	
 	/* (non-Javadoc)
 	 * @see com.interpark.sts.board.dao.UserDAO#getUser(com.interpark.sts.board.vo.UserVO)
@@ -43,6 +44,7 @@ public class UserDAOImpl implements UserDAO {
 			stmt.setString(2, vo.getPassword());
 			
 			rs = stmt.executeQuery();
+			LOGGER.info("\nQuery : \n {}", rs.getStatement());
 			
 			if(rs.next()) {
 				userVO = new UserVO();

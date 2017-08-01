@@ -3,15 +3,59 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
 	<context:component-scan base-package="com.interpark.sts"/>
 	<!--<bean id="sony" class="com.interpark.sts.polymorphism.impl.SonySpeaker"></bean>-->
-	
+	<!-- 
 	<bean id="userService" class="com.interpark.sts.board.impl.UserServiceImpl">
 		<property name="userDAO" ref="userDAO"/>
 	</bean>
 	<bean id="userDAO" class="com.interpark.sts.board.impl.UserDAOImpl"/>
-	
+	 -->
+	 
+	 <bean id="log" class="com.interpark.sts.board.common.LogAdvice"></bean>
+	 <bean id="log4j" class="com.interpark.sts.board.common.Log4jAdvice"></bean>
+	 <bean id="before" class="com.interpark.sts.board.common.BeforeAdvice"/>
+	 <bean id="afterhThrowing" class="com.interpark.sts.board.common.AfterThrowingAdvice"/>
+	 <!-- 
+	 <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	 	<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	 </bean>
+	 
+	 <tx:advice id="txAdvice" transaction-manager="transactionManager">
+	 	<tx:attributes>
+	 		<tx:method name="get*" read-only="true"/>
+	 		<tx:method name="*"/>
+	 	</tx:attributes>
+	 </tx:advice>
+	  -->
+	 <aop:config>
+	 	<aop:pointcut expression="execution(* com.interpark.sts.board..*Impl.*(..))" id="allPointcut"/>
+	 	<aop:pointcut expression="execution(* com.interpark.sts.board..*Impl.get*(..))" id="getPointcut"/>
+	 	
+	 	<aop:aspect ref="log4j">
+	 		<aop:after method="printLogging" pointcut-ref="getPointcut"/>
+	 	</aop:aspect>
+	 	
+	 	<aop:aspect ref="before">
+	 		<aop:before method="beforeLog" pointcut-ref="allPointcut"/>
+	 	</aop:aspect>
+	 	
+	 	<aop:aspect ref="afterhThrowing">
+	 		<aop:after-throwing method="exceptionLog" pointcut-ref="allPointcut"/>
+	 	</aop:aspect>
+	 	 
+<!-- 	 	<aop:aspect ref="log"> -->
+<!-- 	 		<aop:before method="printLogging" pointcut-ref="allPointcut"/> -->
+<!-- 	 		<aop:before method="printLog" pointcut-ref="allPointcut"/> -->
+	 	
+<!-- 	 	<aop:advisor advice-ref="txAdvice" pointcut-ref="allPointcut"/> -->
+	 </aop:config>
+	 
 </beans>

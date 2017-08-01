@@ -1,5 +1,6 @@
 package com.interpark.sts.board.impl;
 
+import com.interpark.sts.board.common.LogAdvice;
 import com.interpark.sts.board.dao.BoardDAO;
 import com.interpark.sts.board.service.BoardService;
 import com.interpark.sts.board.vo.BoardVO;
@@ -19,33 +20,43 @@ public class BoardServiceImpl implements BoardService {
     private static final Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
     @Autowired
     private BoardDAO boardDAO;
+    private LogAdvice log;
 
     public BoardServiceImpl() {
         LOGGER.info("=== board service impl === ");
+        log = new LogAdvice();
     }
 
     @Override
     public void insertBoard(BoardVO vo) {
+//    	log.printLog();
+    	if(vo.getSeq() == 0) {
+    		throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.");
+    	}
         boardDAO.insertBoard(vo);
     }
 
     @Override
     public void updateBoard(BoardVO vo) {
+//    	log.printLog();
         boardDAO.updateBoard(vo);
     }
 
     @Override
     public void deleteBoard(BoardVO vo) {
+//    	log.printLog();
         boardDAO.deleteBoard(vo);
     }
 
     @Override
     public BoardVO getBoard(BoardVO vo) {
+//    	log.printLog();
         return boardDAO.getBoard(vo);
     }
 
     @Override
     public List<BoardVO> getBoardList(BoardVO vo) {
+//    	log.printLog();
         return boardDAO.getBoardList(vo);
     }
 }
