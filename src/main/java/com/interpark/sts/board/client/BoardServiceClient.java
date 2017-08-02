@@ -32,7 +32,7 @@ public class BoardServiceClient {
         vo.setWriter("Yuna");
         vo.setContent(" . ..... 냉무  ,.... 예뻐 . . .ㅋ");
  
-        boardService.insertBoard(vo);
+//        boardService.insertBoard(vo);
 
         // 4. 글 목록 검색 기능 테스트
         List<BoardVO> boardList = boardService.getBoardList(vo);
