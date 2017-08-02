@@ -1,5 +1,6 @@
 server:
   port: 8089
+  contextPath: /
   
 spring:
   datasource:
