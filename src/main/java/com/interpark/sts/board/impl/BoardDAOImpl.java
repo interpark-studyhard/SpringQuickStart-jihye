@@ -1,23 +1,22 @@
 package com.interpark.sts.board.impl;
 
-import com.interpark.sts.board.common.JDBCUtil;
-import com.interpark.sts.board.dao.BoardDAO;
-import com.interpark.sts.board.vo.BoardVO;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.interpark.sts.board.common.JDBCUtil;
+import com.interpark.sts.board.dao.BoardDAO;
+import com.interpark.sts.board.vo.BoardVO;
+
 /**
  * Created by 최지혜 on 2017-07-28.
  */
-@Repository("boardDAO")
+//@Repository("boardDAO")
 public class BoardDAOImpl implements BoardDAO {
 
     private Connection conn = null;

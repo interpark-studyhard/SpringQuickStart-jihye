@@ -55,6 +55,7 @@ public class UserDAOImpl implements UserDAO {
 				userVO.setRole(rs.getString("ROLE"));
 				
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

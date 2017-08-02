@@ -1,16 +1,15 @@
 package com.interpark.sts.board.impl;
 
-import com.interpark.sts.board.common.LogAdvice;
-import com.interpark.sts.board.dao.BoardDAO;
-import com.interpark.sts.board.service.BoardService;
-import com.interpark.sts.board.vo.BoardVO;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.interpark.sts.board.dao.BoardDAO;
+import com.interpark.sts.board.service.BoardService;
+import com.interpark.sts.board.vo.BoardVO;
 
 /**
  * Created by 최지혜 on 2017-07-31.
@@ -20,11 +19,9 @@ public class BoardServiceImpl implements BoardService {
     private static final Logger LOGGER = LoggerFactory.getLogger(BoardServiceImpl.class);
     @Autowired
     private BoardDAO boardDAO;
-    private LogAdvice log;
 
     public BoardServiceImpl() {
         LOGGER.info("=== board service impl === ");
-        log = new LogAdvice();
     }
 
     @Override
